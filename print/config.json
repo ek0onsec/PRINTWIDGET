@@ -1,0 +1,8 @@
+{
+  "serviceURL": "https://gis.calhouncounty.org/arcgis3/rest/services/ExportWebMap/GPServer/Export_Web_Map",
+  "defaultTitle": "ArcGIS Web Map",
+  "defaultAuthor": "Experience Builder for ArcGIS",
+  "defaultCopyright": "Copyright Calhoun County",
+  "defaultFormat": "PDF",
+  "defaultLayout": "Letter ANSI A Landscape"
+}
