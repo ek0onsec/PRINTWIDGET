@@ -4,17 +4,19 @@ Experience Builder Print widget.
 Creator: Robert Scheitlin
 License: http://www.apache.org/licenses/LICENSE-2.0
 */
-import { React, AllWidgetProps, jsx, IMState} from 'jimu-core';
-import {Button, Select, Icon, TextInput, Label, WidgetPlaceholder} from 'jimu-ui';
-import {IMConfig} from '../config';
+import { React, AllWidgetProps, jsx, IMState } from 'jimu-core';
+import { Button, Select, Icon, TextInput, Label, WidgetPlaceholder } from 'jimu-ui';
+import { IMConfig } from '../config';
 import defaultMessages from './translations/default';
-import {JimuMapView, JimuMapViewComponent} from 'jimu-arcgis';
-import {getStyle} from './lib/style';
-import * as PrintTask from "esri/tasks/PrintTask";
-import * as PrintParameters from "esri/tasks/support/PrintParameters";
-import * as PrintTemplate from "esri/tasks/support/PrintTemplate";
-import * as esriRequest from "esri/request";
-import * as MapView from "esri/views/MapView";
+import { JimuMapView, JimuMapViewComponent } from 'jimu-arcgis';
+import { getStyle } from './lib/style';
+import PrintTask from "esri/tasks/PrintTask";
+import PrintParameters from "esri/rest/support/PrintParameters";
+import PrintTemplate from "esri/rest/support/PrintTemplate";
+import esriRequest from "esri/request";
+import MapView from "esri/views/MapView";
+import { DownOutlined } from 'jimu-icons/outlined/directional/down'
+import { RightOutlined } from 'jimu-icons/outlined/directional/right'
 
 const rightArrowIcon = require('jimu-ui/lib/icons/arrow-right-8.svg');
 const downArrowIcon = require('jimu-ui/lib/icons/arrow-down-8.svg');
@@ -340,7 +342,11 @@ export default class Widget extends React.PureComponent<AllWidgetProps<IMConfig>
           </Select>
         </div>
         <div className={'d-flex m-2 flex-column'}>
-          <Button style={{textAlign: 'left'}} type='secondary' onClick={this.openAdvPrintOpts}><Icon icon={currentArrow}></Icon>{this.nls('advPrintOptions')}</Button>
+          <Button style={{textAlign: 'left'}} type='secondary' onClick={this.openAdvPrintOpts}>
+            {/* <Icon icon={currentArrow}></Icon> */}
+            {advPrintOptsOpen ? <RightOutlined autoFlip size='m' /> : <DownOutlined autoFlip size='m' />}
+            {this.nls('advPrintOptions')}
+          </Button>
         </div>
         {advPrintOptsOpen &&
           <div className={'m-2'}>

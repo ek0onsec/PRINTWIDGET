@@ -21,8 +21,8 @@ import {React, defaultMessages as jimuCoreMessages, loadArcGISJSAPIModules} from
 import {AllWidgetSettingProps} from 'jimu-for-builder';
 import {IMConfig} from '../config';
 import defaultMessages from './translations/default';
-import {JimuMapViewSelector, SettingSection, SettingRow} from 'jimu-ui/advanced/setting-components';
-import {Select, TextInput, defaultMessages as jimuUIDefaultMessages,} from 'jimu-ui';
+import {MapWidgetSelector, SettingSection, SettingRow} from 'jimu-ui/advanced/setting-components';
+import {Select, TextInput, defaultMessages as jimuUIDefaultMessages} from 'jimu-ui';
 
 export interface WidgetSettingState{
   layoutChoiceList: [],
@@ -102,10 +102,10 @@ export default class Setting extends React.PureComponent<AllWidgetSettingProps<I
     this.props.onSettingChange(alterProps)
   }
 
-  onMapWidgetSelected = (useMapWidgetsIds: string[]) => {
+  onMapWidgetSelected = (useMapWidgetsId: string[]) => {
     this.props.onSettingChange({
         id: this.props.id,
-        useMapWidgetIds: useMapWidgetsIds
+        useMapWidgetIds: useMapWidgetsId
     });
   }
 
@@ -156,10 +156,7 @@ export default class Setting extends React.PureComponent<AllWidgetSettingProps<I
               <SettingRow label={this.formatMessage('selectMapWidget')}>
               </SettingRow>
               <SettingRow>
-                  <JimuMapViewSelector
-                  onSelect={this.onMapWidgetSelected}
-                  useMapWidgetIds={this.props.useMapWidgetIds}
-                  />
+                  <MapWidgetSelector onSelect={this.onMapWidgetSelected} useMapWidgetIds={this.props.useMapWidgetIds} />
               </SettingRow>
               <SettingRow label={this.formatMessage('serviceURL')} flow='wrap'>
                 <TextInput value={config.serviceURL} onChange={this.serviceURLChanged}></TextInput>
